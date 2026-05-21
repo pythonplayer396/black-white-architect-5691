@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
-import solisLogo from "@/assets/solis-logo.jpg";
 
 const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,7 +9,7 @@ const Navigation = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/60">
       <div className="container mx-auto px-8 py-4 flex items-center justify-between">
         <a href="/" className="flex items-center gap-3 group">
-          <img src={solisLogo} alt="Solis Institute" className="h-11 w-11 object-contain dark:invert" />
+          <img src="/3e0c4fb4-a2f2-4257-b445-9f1e8aea1c12.jpg" alt="Solis Institute" className="h-11 w-11 object-contain dark:invert" />
           <span className="flex flex-col leading-none">
             <span className="font-display text-xl tracking-[0.2em] text-foreground">SOLIS</span>
             <span className="text-[9px] tracking-[0.18em] uppercase text-muted-foreground mt-1 hidden sm:inline">Institute of Technology &amp; Software</span>

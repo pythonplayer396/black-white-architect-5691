@@ -48,11 +48,11 @@ const About = () => {
                 <div className="grid grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-minimal text-muted-foreground mb-2">FOUNDED</h4>
-                    <p className="text-xl">2022</p>
+                    <p className="text-xl">2025</p>
                   </div>
                   <div>
                     <h4 className="text-minimal text-muted-foreground mb-2">PROJECTS SHIPPED</h4>
-                    <p className="text-xl">40+</p>
+                    <p className="text-xl">..</p>
                   </div>
                 </div>
               </div>
