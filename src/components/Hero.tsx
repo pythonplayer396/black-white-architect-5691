@@ -2,28 +2,51 @@ import heroImage from "@/assets/hero-studio.jpg";
 
 const Hero = () => {
   return (
-    <section className="relative h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative h-screen flex items-center overflow-hidden">
       <div
-        className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+        className="absolute inset-0 bg-cover bg-center bg-no-repeat scale-105"
         style={{ backgroundImage: `url(${heroImage})` }}
       />
       <div className="absolute inset-0 hero-overlay" />
 
-      <div className="relative z-10 text-center max-w-5xl mx-auto px-6">
-        <h1 className="text-6xl md:text-8xl lg:text-9xl font-light text-white text-architectural mb-8 reveal">
-          WE BUILD
-          <br />
-          WEBSITES & APPS
-        </h1>
-        <p className="text-xl md:text-2xl text-white/80 font-light tracking-wide max-w-2xl mx-auto reveal-delayed">
-          A small studio of designers and engineers shipping digital products for ambitious teams
-        </p>
+      {/* Top eyebrow rail */}
+      <div className="absolute top-28 left-0 right-0 z-10">
+        <div className="container mx-auto px-8">
+          <div className="flex items-center gap-4 text-white/70 reveal">
+            <span className="rule-gold" />
+            <span className="text-minimal">Est. 2022 · A Digital Studio</span>
+          </div>
+        </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 reveal-delayed">
-        <div className="w-px h-16 bg-white/40" />
-        <div className="text-minimal text-white/60 mt-4 rotate-90 origin-center">
-          SCROLL
+      {/* Headline block, left-aligned editorial */}
+      <div className="relative z-10 container mx-auto px-8">
+        <div className="max-w-5xl">
+          <h1 className="text-architectural text-white text-[3.5rem] md:text-[6rem] lg:text-[7.5rem] reveal">
+            Considered software,
+            <br />
+            <span className="font-display-italic text-[hsl(var(--accent))]">crafted</span> for ambitious teams.
+          </h1>
+
+          <div className="mt-12 grid md:grid-cols-12 gap-8 reveal-delayed">
+            <div className="md:col-span-1 hidden md:block">
+              <span className="rule-gold mt-3" />
+            </div>
+            <p className="md:col-span-7 text-lg md:text-xl text-white/75 font-light leading-relaxed max-w-2xl">
+              Pixelcraft is a small studio of designers and engineers
+              partnering with founders, institutions and established brands to
+              build websites, web platforms and mobile apps with the rigour
+              they deserve.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      {/* Bottom rail */}
+      <div className="absolute bottom-10 left-0 right-0 z-10">
+        <div className="container mx-auto px-8 flex items-end justify-between text-white/60 reveal-delayed">
+          <div className="text-minimal">Scroll to explore</div>
+          <div className="text-minimal hidden md:block">Selected Work · 2022 — 2025</div>
         </div>
       </div>
     </section>
