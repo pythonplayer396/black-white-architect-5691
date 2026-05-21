@@ -17,6 +17,9 @@ const Navigation = () => {
         </a>
         
         <div className="hidden md:flex items-center space-x-12">
+          <a href="/" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            HOME
+          </a>
           <a href="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             WORK
           </a>
@@ -46,6 +49,9 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
+            <a href="/" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+              HOME
+            </a>
             <a href="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
               WORK
             </a>
