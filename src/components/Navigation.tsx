@@ -6,10 +6,11 @@ const Navigation = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between">
-        <a href="/" className="text-minimal text-foreground">
-          PIXELCRAFT
+    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/70 backdrop-blur-xl border-b border-border/60">
+      <div className="container mx-auto px-8 py-5 flex items-center justify-between">
+        <a href="/" className="flex items-baseline gap-2 group">
+          <span className="font-display text-2xl tracking-tight text-foreground">Pixelcraft</span>
+          <span className="text-minimal text-muted-foreground hidden sm:inline">— Studio</span>
         </a>
         
         <div className="hidden md:flex items-center space-x-12">

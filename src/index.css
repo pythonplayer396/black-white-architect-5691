@@ -2,110 +2,102 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Minimal Architecture Design System - Black & White Excellence */
+/* Pixelcraft — Editorial / Institutional Design System
+   Warm ink palette with refined gold accent. Serif display + clean sans. */
 
 @layer base {
   :root {
-    /* Pure Architecture Palette */
-    --background: 0 0% 100%;
-    --foreground: 0 0% 0%;
-    
-    --card: 0 0% 100%;
-    --card-foreground: 0 0% 0%;
-    
-    --popover: 0 0% 100%;
-    --popover-foreground: 0 0% 0%;
-    
-    /* Primary: Pure Black */
-    --primary: 0 0% 0%;
-    --primary-foreground: 0 0% 100%;
-    
-    /* Secondary: Pure White */
-    --secondary: 0 0% 100%;
-    --secondary-foreground: 0 0% 0%;
-    
-    /* Muted: Subtle Gray */
-    --muted: 0 0% 96%;
-    --muted-foreground: 0 0% 20%;
-    
-    /* Accent: Elegant Gray */
-    --accent: 0 0% 95%;
-    --accent-foreground: 0 0% 0%;
-    
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    
-    --border: 0 0% 90%;
-    --input: 0 0% 95%;
-    --ring: 0 0% 0%;
+    /* Surfaces — warm off-white paper */
+    --background: 36 25% 96%;
+    --foreground: 30 12% 10%;
 
-    --radius: 0.5rem;
+    --card: 36 25% 98%;
+    --card-foreground: 30 12% 10%;
 
-    --sidebar-background: 0 0% 98%;
+    --popover: 36 25% 98%;
+    --popover-foreground: 30 12% 10%;
 
-    --sidebar-foreground: 240 5.3% 26.1%;
+    /* Ink */
+    --primary: 30 14% 12%;
+    --primary-foreground: 36 25% 96%;
 
-    --sidebar-primary: 240 5.9% 10%;
+    --secondary: 36 18% 92%;
+    --secondary-foreground: 30 12% 10%;
 
-    --sidebar-primary-foreground: 0 0% 98%;
+    --muted: 34 18% 90%;
+    --muted-foreground: 30 8% 38%;
 
-    --sidebar-accent: 240 4.8% 95.9%;
+    /* Accent — refined antique gold */
+    --accent: 40 55% 52%;
+    --accent-foreground: 30 14% 10%;
 
-    --sidebar-accent-foreground: 240 5.9% 10%;
+    --destructive: 0 60% 45%;
+    --destructive-foreground: 36 25% 96%;
 
-    --sidebar-border: 220 13% 91%;
+    --border: 32 14% 84%;
+    --input: 32 14% 88%;
+    --ring: 30 14% 12%;
 
-    --sidebar-ring: 217.2 91.2% 59.8%;
-    
-    /* Architecture Gradients */
-    --gradient-hero: linear-gradient(135deg, hsl(0 0% 0% / 0.8), hsl(0 0% 0% / 0.4));
-    --gradient-overlay: linear-gradient(180deg, hsl(0 0% 0% / 0.9), hsl(0 0% 0% / 0.1));
-    
-    /* Elegant Shadows */
-    --shadow-architectural: 0 25px 50px -12px hsl(0 0% 0% / 0.25);
-    --shadow-elegant: 0 10px 30px -10px hsl(0 0% 0% / 0.15);
-    
-    /* Smooth Transitions */
+    --radius: 0.25rem;
+
+    --sidebar-background: 36 22% 94%;
+    --sidebar-foreground: 30 12% 18%;
+    --sidebar-primary: 30 14% 12%;
+    --sidebar-primary-foreground: 36 25% 96%;
+    --sidebar-accent: 34 18% 90%;
+    --sidebar-accent-foreground: 30 14% 12%;
+    --sidebar-border: 32 14% 84%;
+    --sidebar-ring: 40 55% 52%;
+
+    /* Gradients */
+    --gradient-hero: linear-gradient(135deg, hsl(30 14% 6% / 0.78), hsl(30 14% 6% / 0.45));
+    --gradient-overlay: linear-gradient(180deg, hsl(30 14% 6% / 0.85) 0%, hsl(30 14% 6% / 0.35) 55%, hsl(30 14% 6% / 0.7) 100%);
+
+    /* Shadows */
+    --shadow-architectural: 0 30px 60px -20px hsl(30 14% 6% / 0.35);
+    --shadow-elegant: 0 12px 36px -12px hsl(30 14% 6% / 0.18);
+
     --transition-smooth: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
     --transition-fast: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
-    
-    --card: 0 0% 5%;
-    --card-foreground: 0 0% 100%;
-    
-    --popover: 0 0% 5%;
-    --popover-foreground: 0 0% 100%;
-    
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
-    
-    --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 100%;
-    
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 60%;
-    
-    --accent: 0 0% 15%;
-    --accent-foreground: 0 0% 100%;
-    
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 100%;
-    
-    --border: 0 0% 15%;
-    --input: 0 0% 10%;
-    --ring: 0 0% 100%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --background: 30 12% 7%;
+    --foreground: 36 22% 94%;
+
+    --card: 30 12% 10%;
+    --card-foreground: 36 22% 94%;
+
+    --popover: 30 12% 10%;
+    --popover-foreground: 36 22% 94%;
+
+    --primary: 36 22% 94%;
+    --primary-foreground: 30 12% 7%;
+
+    --secondary: 30 10% 14%;
+    --secondary-foreground: 36 22% 94%;
+
+    --muted: 30 10% 14%;
+    --muted-foreground: 34 10% 64%;
+
+    --accent: 40 55% 58%;
+    --accent-foreground: 30 14% 8%;
+
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 36 22% 94%;
+
+    --border: 30 10% 18%;
+    --input: 30 10% 16%;
+    --ring: 40 55% 58%;
+
+    --sidebar-background: 30 12% 9%;
+    --sidebar-foreground: 36 18% 86%;
+    --sidebar-primary: 36 22% 94%;
+    --sidebar-primary-foreground: 30 12% 7%;
+    --sidebar-accent: 30 10% 14%;
+    --sidebar-accent-foreground: 36 22% 94%;
+    --sidebar-border: 30 10% 18%;
+    --sidebar-ring: 40 55% 58%;
   }
 }
 
@@ -114,38 +106,79 @@
     @apply border-border;
   }
 
+  html {
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "ss01", "cv11";
   }
-  
-  /* Architectural Typography */
+
+  /* Serif display class — editorial gravitas */
+  .font-display {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -0.01em;
+  }
+
+  .font-display-italic {
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  /* Architectural / display tracking */
   .text-architectural {
-    @apply tracking-[-0.02em] leading-[1.1];
+    font-family: 'Instrument Serif', 'Times New Roman', serif;
+    font-weight: 400;
+    letter-spacing: -0.015em;
+    line-height: 1.02;
   }
-  
+
+  /* Eyebrow / small caps style label */
   .text-minimal {
-    @apply tracking-wide uppercase text-xs font-medium;
+    @apply tracking-[0.22em] uppercase text-[11px] font-medium;
+    font-family: 'Inter', sans-serif;
   }
-  
-  /* Hero Image Overlay */
+
+  /* Refined gold rule */
+  .rule-gold {
+    @apply inline-block w-10 h-px align-middle;
+    background: hsl(var(--accent));
+  }
+
+  /* Hero overlay */
   .hero-overlay {
     background: var(--gradient-overlay);
   }
-  
-  /* Smooth Reveal Animation */
+
+  /* Subtle paper texture */
+  .paper-texture {
+    background-image:
+      radial-gradient(circle at 1px 1px, hsl(var(--foreground) / 0.03) 1px, transparent 0);
+    background-size: 24px 24px;
+  }
+
+  /* Reveal */
   .reveal {
     @apply opacity-0 translate-y-8;
-    animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    animation: reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) forwards;
   }
-  
+
   .reveal-delayed {
     @apply opacity-0 translate-y-8;
-    animation: reveal 1.2s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+    animation: reveal 1.4s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
   }
-  
+
   @keyframes reveal {
     to {
       @apply opacity-100 translate-y-0;
     }
+  }
+
+  ::selection {
+    background: hsl(var(--accent) / 0.35);
+    color: hsl(var(--foreground));
   }
 }
