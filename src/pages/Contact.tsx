@@ -19,8 +19,8 @@ const Contact = () => {
                 <div className="space-y-8">
                   <div>
                     <h3 className="text-minimal text-muted-foreground mb-2">EMAIL</h3>
-                    <a href="mailto:hello@solis.studio" className="text-xl hover:text-muted-foreground transition-colors duration-300">
-                      hello@solis.studio
+                    <a href="mailto:roshw0023@gmail.com" className="text-xl hover:text-muted-foreground transition-colors duration-300">
+                      roshw0023@gmail.com
                     </a>
                   </div>
 
@@ -34,7 +34,7 @@ const Contact = () => {
                     <address className="text-xl not-italic">
                       Remote-first
                       <br />
-                      Working worldwide
+                      Working from Bangladesh
                     </address>
                   </div>
                 </div>
@@ -44,14 +44,8 @@ const Contact = () => {
                 <div>
                   <h3 className="text-minimal text-muted-foreground mb-6">ELSEWHERE</h3>
                   <div className="space-y-4">
-                    <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
+                    <a href="https://github.com/pythonplayer396" target="_blank" rel="noreferrer" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
                       GitHub
-                    </a>
-                    <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
-                      LinkedIn
-                    </a>
-                    <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
-                      Dribbble
                     </a>
                   </div>
                 </div>
