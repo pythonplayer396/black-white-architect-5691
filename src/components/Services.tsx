@@ -2,24 +2,24 @@ const Services = () => {
   const services = [
     {
       number: "01",
-      title: "RESIDENTIAL",
-      description: "Crafting homes that reflect individual lifestyles while maintaining architectural integrity"
+      title: "WEBSITES",
+      description: "Marketing sites, landing pages and portfolios — fast, responsive and built to convert",
     },
     {
-      number: "02", 
-      title: "COMMERCIAL",
-      description: "Designing functional spaces that enhance business environments and user experiences"
+      number: "02",
+      title: "WEB APPS",
+      description: "Custom dashboards, SaaS platforms and internal tools with real backends and auth",
     },
     {
       number: "03",
-      title: "RENOVATION",
-      description: "Transforming existing structures with contemporary sensibilities and sustainable practices"
+      title: "MOBILE APPS",
+      description: "iOS and Android apps crafted with care, from first sketch to App Store release",
     },
     {
       number: "04",
-      title: "CONSULTATION",
-      description: "Providing expert guidance on design direction, planning, and architectural solutions"
-    }
+      title: "DESIGN & BRANDING",
+      description: "UI/UX, design systems and brand identity that make your product unmistakable",
+    },
   ];
 
   return (
@@ -29,10 +29,10 @@ const Services = () => {
           <div className="mb-20">
             <h2 className="text-minimal text-muted-foreground mb-4">SERVICES</h2>
             <h3 className="text-4xl md:text-6xl font-light text-architectural">
-              What We Do
+              What we do
             </h3>
           </div>
-          
+
           <div className="grid md:grid-cols-2 gap-x-20 gap-y-16">
             {services.map((service, index) => (
               <div key={index} className="group">

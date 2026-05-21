@@ -5,60 +5,59 @@ const Contact = () => {
         <div className="max-w-7xl mx-auto">
           <div className="grid md:grid-cols-2 gap-20">
             <div>
-              <h2 className="text-minimal text-muted-foreground mb-4">GET IN TOUCH</h2>
+              <h2 className="text-minimal text-muted-foreground mb-4">START A PROJECT</h2>
               <h3 className="text-4xl md:text-6xl font-light text-architectural mb-12">
-                Let's Create Something
+                Got an idea?
                 <br />
-                Extraordinary
+                Let's build it.
               </h3>
-              
+
               <div className="space-y-8">
                 <div>
                   <h4 className="text-minimal text-muted-foreground mb-2">EMAIL</h4>
-                  <a href="mailto:hello@archstudio.com" className="text-xl hover:text-muted-foreground transition-colors duration-300">
-                    hello@archstudio.com
+                  <a href="mailto:hello@pixelcraft.studio" className="text-xl hover:text-muted-foreground transition-colors duration-300">
+                    hello@pixelcraft.studio
                   </a>
                 </div>
-                
+
                 <div>
-                  <h4 className="text-minimal text-muted-foreground mb-2">PHONE</h4>
-                  <a href="tel:+1234567890" className="text-xl hover:text-muted-foreground transition-colors duration-300">
-                    +1 (234) 567-8900
-                  </a>
+                  <h4 className="text-minimal text-muted-foreground mb-2">RESPONSE TIME</h4>
+                  <p className="text-xl">Within 24 hours</p>
                 </div>
-                
+
                 <div>
-                  <h4 className="text-minimal text-muted-foreground mb-2">STUDIO</h4>
-                  <address className="text-xl not-italic">
-                    123 Design Avenue
+                  <h4 className="text-minimal text-muted-foreground mb-2">BASED IN</h4>
+                  <p className="text-xl not-italic">
+                    Remote-first
                     <br />
-                    New York, NY 10001
-                  </address>
+                    Working worldwide
+                  </p>
                 </div>
               </div>
             </div>
-            
+
             <div className="space-y-8">
               <div>
-                <h4 className="text-minimal text-muted-foreground mb-6">FOLLOW US</h4>
+                <h4 className="text-minimal text-muted-foreground mb-6">ELSEWHERE</h4>
                 <div className="space-y-4">
                   <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
-                    Instagram
+                    GitHub
                   </a>
                   <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
                     LinkedIn
                   </a>
                   <a href="#" className="block text-xl hover:text-muted-foreground transition-colors duration-300">
-                    Behance
+                    Dribbble
                   </a>
                 </div>
               </div>
-              
+
               <div className="pt-12 border-t border-border">
                 <p className="text-muted-foreground">
-                  We approach each project with curiosity, rigor, and a commitment to excellence. 
-                  Our process begins with listening, understanding your vision, and translating 
-                  it into spaces that exceed expectations.
+                  Whether you have a fully scoped brief or just a rough idea on
+                  a napkin, send it over. We'll come back with thoughts, a
+                  realistic timeline, and an honest opinion on whether we're
+                  the right team for it.
                 </p>
               </div>
             </div>
