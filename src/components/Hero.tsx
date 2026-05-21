@@ -6,7 +6,7 @@ const Hero = () => {
         <div className="container mx-auto px-8">
           <div className="flex items-center gap-4 text-foreground/70 reveal">
             <span className="rule-gold" />
-            <span className="text-minimal">Solis Institute · Est. 2022</span>
+            <span className="text-minimal">Solis Institute · Est. 2025</span>
           </div>
         </div>
       </div>
@@ -38,7 +38,7 @@ const Hero = () => {
       <div className="absolute bottom-10 left-0 right-0 z-10">
         <div className="container mx-auto px-8 flex items-end justify-between text-foreground/60 reveal-delayed">
           <div className="text-minimal">Scroll to explore</div>
-          <div className="text-minimal hidden md:block">Selected Work · 2022 — 2025</div>
+          <div className="text-minimal hidden md:block">Selected Work · 2025 — 2026</div>
         </div>
       </div>
     </section>

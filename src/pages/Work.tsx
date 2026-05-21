@@ -30,7 +30,7 @@ const Work = () => {
       title: "FIELDKIT MOBILE",
       client: "FIELDKIT, 2023",
       category: "MOBILE APP",
-      description: "Offline-first field service app used by 2,000+ technicians daily. Sync engine, photo uploads, push notifications.",
+      description: "\u200BOffline-first field service app used by 2,000+ technicians daily. Sync engine, photo uploads, push notifications.",
       stack: "React Native",
       year: "2023",
     },
