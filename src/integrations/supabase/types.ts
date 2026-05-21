@@ -55,12 +55,16 @@ export type Database = {
       }
       projects: {
         Row: {
+          challenge: string | null
           created_at: string
           description: string | null
           featured: boolean
           id: string
           image_url: string | null
           link: string | null
+          process: string | null
+          results: string | null
+          slug: string | null
           sort_order: number
           tags: string[] | null
           title: string
@@ -68,12 +72,16 @@ export type Database = {
           year: string | null
         }
         Insert: {
+          challenge?: string | null
           created_at?: string
           description?: string | null
           featured?: boolean
           id?: string
           image_url?: string | null
           link?: string | null
+          process?: string | null
+          results?: string | null
+          slug?: string | null
           sort_order?: number
           tags?: string[] | null
           title: string
@@ -81,12 +89,16 @@ export type Database = {
           year?: string | null
         }
         Update: {
+          challenge?: string | null
           created_at?: string
           description?: string | null
           featured?: boolean
           id?: string
           image_url?: string | null
           link?: string | null
+          process?: string | null
+          results?: string | null
+          slug?: string | null
           sort_order?: number
           tags?: string[] | null
           title?: string
