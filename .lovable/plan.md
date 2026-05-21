@@ -1,63 +1,66 @@
-# Turn this site into your agency website
+# Admin Panel + Content Management
 
-Repurpose the existing minimal architecture template into a sleek **digital studio** site for your team that builds websites and apps. Same elegant structure, completely new content + visuals tuned to tech/dev.
+## Overview
+Build a protected `/admin` panel where you (rian) can manage site content. To do this securely and have content persist across visits/devices, the site needs a backend — I'll enable **Lovable Cloud** (database + auth + storage, no external account needed).
 
-## The concept
+## Auth
+- Enable Lovable Cloud
+- Create one admin account with email `rian@solis.local` and password `rian3030` (Supabase auth requires an email format; you'll log in with that email + your password — or I can use `rian` as a display username with a hidden email mapping)
+- `/admin` route is protected — redirects to `/admin/login` if not signed in
+- Uses a `user_roles` table with an `admin` role (secure, server-checked)
 
-A modern, minimal studio site positioning you as a small expert team that designs and ships websites, web apps, and mobile apps for clients. Confident, clean, a bit bold — not another generic dev agency page.
+## Admin Panel Sections
 
-## What changes (page by page)
+### 1. Projects
+- List all projects from DB
+- Add / edit / delete projects (title, year, description, tags, image, link)
+- Set a "featured / recent" flag
+- Set "number of projects shipped" counter (site stat)
 
-**Hero**
-- Headline: something like "WE BUILD / WEBSITES & APPS" (you'll give me the real studio name + tagline)
-- New background: replace architecture photo with a tech-flavored hero (code/gradient/abstract product mockup)
-- Subtext: one line about who you help
+### 2. Blog
+- List posts, create new, edit, delete
+- Fields: title, slug, excerpt, cover image, markdown body, published date
+- Image upload via Cloud storage
 
-**Services** (rewrite the 4 cards)
-1. Web Design & Development
-2. Mobile Apps (iOS / Android)
-3. Web Apps & SaaS Platforms
-4. Branding & UI/UX Design
+### 3. Team (new)
+- List team members with name, role, level, photo, bio
+- Add / edit / delete members
+- **Roles management**: create new roles, delete roles, assign role + level to members
 
-**About**
-- "We are a small team of designers and developers building digital products."
-- Optional: team members section (photos, names, roles)
+### 4. Site Stats
+- Edit the "40+" / "..." projects-shipped number used on the homepage
 
-**Portfolio / Work**
-- Rename from architecture projects → app & website case studies
-- Each card: project name, client, type (Web / Mobile / SaaS), short result
-- Placeholder mockups for now; swap your real work later
+## Frontend Wiring
+- Homepage Portfolio, Blog page, About/Team section read from DB instead of hardcoded arrays
+- Public pages stay fast (cached queries via react-query, already installed)
 
-**Contact**
-- "Start a project" form: name, email, project type, budget, message
-- Can be wired to Lovable Cloud later so submissions are stored + emailed to you
+## Performance Fix (slow tab navigation)
+- Convert page imports in `src/App.tsx` to `React.lazy` + `Suspense` so each route loads independently instead of one giant bundle
+- Add route-level prefetch on nav hover
+- This is what's causing the lag when switching tabs
 
-**Navigation / branding**
-- Studio name in logo spot
-- Adjust nav labels (Work, Services, About, Contact)
+## Tech / Files
 
-## Design refresh
+**New tables** (via Cloud migration):
+- `projects`, `blog_posts`, `team_members`, `team_roles`, `site_settings`, `user_roles` (+ `app_role` enum), `has_role()` security-definer function, RLS policies
 
-- Keep minimal layout, swap palette to something more "tech studio" (e.g. deep charcoal + electric accent, or paper white + bold accent)
-- Modern typography pair (e.g. Space Grotesk + Inter)
-- Subtle motion on scroll
-- Dark mode polished
+**New files**:
+- `src/pages/admin/Login.tsx`
+- `src/pages/admin/AdminLayout.tsx`
+- `src/pages/admin/Dashboard.tsx`
+- `src/pages/admin/ProjectsAdmin.tsx`
+- `src/pages/admin/BlogAdmin.tsx`
+- `src/pages/admin/TeamAdmin.tsx`
+- `src/pages/admin/SettingsAdmin.tsx`
+- `src/hooks/useAdminAuth.ts`
 
-## What I need from you to make it great
+**Modified**:
+- `src/App.tsx` — lazy routes + admin routes
+- `src/components/Portfolio.tsx`, `src/pages/Blog.tsx`, `src/components/About.tsx` — read from DB
 
-1. **Studio name** + 1-line tagline
-2. **Vibe**: bold/colorful, minimal/monochrome, or playful?
-3. **Real services** — keep my 4 suggestions or adjust?
-4. **Team info** (names/roles) — or skip team section for now?
-5. **Any past projects** to feature, or use placeholders?
-6. **Contact form** — just display, or store submissions in Lovable Cloud + email you?
+## One thing to confirm
+Supabase auth needs an email. Two options:
+- **A)** Login with `rian@solis.local` + `rian3030` (recommended, standard)
+- **B)** Login form accepts `rian` as username and I map it to a hidden email internally
 
-## Suggested order of work
-
-1. Rewrite all copy (Hero, Services, About, Portfolio, Contact) with agency content
-2. Refresh palette + typography + new hero visual
-3. Add team section (if wanted)
-4. Wire contact form to Lovable Cloud (if wanted)
-5. Publish
-
-Tell me which parts to do — or just answer the 6 questions and I'll execute the whole thing in one pass.
+Which do you prefer? (I'll default to **A** if you just say "go".)
