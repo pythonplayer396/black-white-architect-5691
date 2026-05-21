@@ -16,6 +16,10 @@ type Project = {
   link: string | null;
   featured: boolean;
   sort_order: number;
+  challenge: string | null;
+  process: string | null;
+  results: string | null;
+  slug: string | null;
 };
 
 const empty: Omit<Project, "id"> = {
@@ -27,6 +31,10 @@ const empty: Omit<Project, "id"> = {
   link: "",
   featured: false,
   sort_order: 0,
+  challenge: "",
+  process: "",
+  results: "",
+  slug: "",
 };
 
 export default function ProjectsAdmin() {
@@ -107,6 +115,10 @@ export default function ProjectsAdmin() {
           <Textarea placeholder="Description" value={editing.description ?? ""} onChange={(e) => setEditing({ ...editing, description: e.target.value })} />
           <Input placeholder="Tags (comma-separated)" value={(editing.tags ?? []).join(", ")} onChange={(e) => setEditing({ ...editing, tags: e.target.value.split(",").map((s) => s.trim()).filter(Boolean) })} />
           <Input placeholder="Link URL" value={editing.link ?? ""} onChange={(e) => setEditing({ ...editing, link: e.target.value })} />
+          <Input placeholder="URL slug (optional, e.g. acme-redesign)" value={editing.slug ?? ""} onChange={(e) => setEditing({ ...editing, slug: e.target.value })} />
+          <Textarea rows={4} placeholder="Challenge — what problem were we solving?" value={editing.challenge ?? ""} onChange={(e) => setEditing({ ...editing, challenge: e.target.value })} />
+          <Textarea rows={4} placeholder="Process — how did we approach the work?" value={editing.process ?? ""} onChange={(e) => setEditing({ ...editing, process: e.target.value })} />
+          <Textarea rows={4} placeholder="Results — outcomes & impact" value={editing.results ?? ""} onChange={(e) => setEditing({ ...editing, results: e.target.value })} />
           <div className="space-y-2">
             <Input placeholder="Image URL" value={editing.image_url ?? ""} onChange={(e) => setEditing({ ...editing, image_url: e.target.value })} />
             <Input type="file" accept="image/*" onChange={(e) => e.target.files?.[0] && uploadImage(e.target.files[0])} />
