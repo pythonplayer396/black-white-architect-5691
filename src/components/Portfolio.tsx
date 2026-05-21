@@ -20,7 +20,7 @@ const Portfolio = () => {
       image: project3,
       title: "FIELDKIT MOBILE",
       meta: "iOS & ANDROID · 2023",
-      description: "Offline-first field service app — React Native, sync engine, used by 2,000+ technicians daily",
+      description: "\u200BOffline-first field service app \u2014 React Native, sync engine, used by 2,000+ technicians daily",
     },
   ];
 
