@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
+import { Link } from "react-router-dom";
 import Navigation from "@/components/Navigation";
 import { supabase } from "@/integrations/supabase/client";
 
@@ -11,6 +12,7 @@ type Project = {
   tags: string[] | null;
   image_url: string | null;
   link: string | null;
+  slug: string | null;
 };
 
 const Work = () => {
@@ -21,7 +23,7 @@ const Work = () => {
     queryFn: async () => {
       const { data, error } = await supabase
         .from("projects")
-        .select("id, title, year, description, tags, image_url, link")
+        .select("id, title, year, description, tags, image_url, link, slug")
         .order("sort_order")
         .order("created_at", { ascending: false });
       if (error) throw error;
@@ -137,12 +139,14 @@ const Work = () => {
                       </div>
                     </div>
                   );
-                  return project.link ? (
-                    <a key={project.id} href={project.link} target="_blank" rel="noreferrer">
+                  return (
+                    <Link
+                      key={project.id}
+                      to={`/work/${project.slug ?? project.id}`}
+                      className="block"
+                    >
                       {Card}
-                    </a>
-                  ) : (
-                    <div key={project.id}>{Card}</div>
+                    </Link>
                   );
                 })}
               </div>

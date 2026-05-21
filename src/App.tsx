@@ -8,6 +8,7 @@ import { lazy, Suspense } from "react";
 // Public pages — eager so tab switches are instant (no chunk fetch, no flash)
 import Index from "./pages/Index";
 import Work from "./pages/Work";
+import CaseStudy from "./pages/CaseStudy";
 import Services from "./pages/Services";
 import About from "./pages/About";
 import Contact from "./pages/Contact";
@@ -50,6 +51,7 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/work" element={<Work />} />
+          <Route path="/work/:id" element={<CaseStudy />} />
           <Route path="/services" element={<Services />} />
           <Route path="/about" element={<About />} />
           <Route path="/contact" element={<Contact />} />
