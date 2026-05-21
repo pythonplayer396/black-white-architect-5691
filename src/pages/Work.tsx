@@ -1,73 +1,43 @@
 import { useState } from "react";
+import { useQuery } from "@tanstack/react-query";
 import Navigation from "@/components/Navigation";
-import project1 from "@/assets/project-1.jpg";
-import project2 from "@/assets/project-2.jpg";
-import project3 from "@/assets/project-3.jpg";
+import { supabase } from "@/integrations/supabase/client";
+
+type Project = {
+  id: string;
+  title: string;
+  year: string | null;
+  description: string | null;
+  tags: string[] | null;
+  image_url: string | null;
+  link: string | null;
+};
 
 const Work = () => {
-  const [activeCategory, setActiveCategory] = useState("ALL");
-  const projects = [
-    {
-      image: project1,
-      title: "NORTHWIND SAAS",
-      client: "NORTHWIND, 2024",
-      category: "WEB APP",
-      description: "Analytics dashboard for a B2B logistics startup. Real-time data, custom design system, role-based access.",
-      stack: "Next.js · Postgres",
-      year: "2024",
-    },
-    {
-      image: project2,
-      title: "AURORA COMMERCE",
-      client: "AURORA, 2024",
-      category: "WEBSITE",
-      description: "Headless e-commerce site for a fashion brand. Sub-second loads, custom CMS, +38% conversion vs the old store.",
-      stack: "Next.js · Shopify",
-      year: "2024",
-    },
-    {
-      image: project3,
-      title: "FIELDKIT MOBILE",
-      client: "FIELDKIT, 2023",
-      category: "MOBILE APP",
-      description: "\u200BOffline-first field service app used by 2,000+ technicians daily. Sync engine, photo uploads, push notifications.",
-      stack: "React Native",
-      year: "2023",
-    },
-    {
-      image: project1,
-      title: "LEDGER DASHBOARD",
-      client: "LEDGER, 2024",
-      category: "WEB APP",
-      description: "Finance dashboard with multi-account aggregation, charting and CSV exports for a fintech client.",
-      stack: "React · Supabase",
-      year: "2024",
-    },
-    {
-      image: project2,
-      title: "STUDIO MOSS",
-      client: "MOSS, 2023",
-      category: "WEBSITE",
-      description: "Portfolio site for an interior design studio. Editorial layout, custom CMS, image-first storytelling.",
-      stack: "Astro · Sanity",
-      year: "2023",
-    },
-    {
-      image: project3,
-      title: "PULSE FITNESS",
-      client: "PULSE, 2023",
-      category: "MOBILE APP",
-      description: "Workout tracking app with social feeds and live class streaming. Launched on iOS and Android.",
-      stack: "React Native",
-      year: "2023",
-    },
-  ];
+  const [activeTag, setActiveTag] = useState<string>("ALL");
 
-  const categories = ["ALL", "WEBSITE", "WEB APP", "MOBILE APP"];
+  const { data: projects = [], isLoading } = useQuery({
+    queryKey: ["public", "projects"],
+    queryFn: async () => {
+      const { data, error } = await supabase
+        .from("projects")
+        .select("id, title, year, description, tags, image_url, link")
+        .order("sort_order")
+        .order("created_at", { ascending: false });
+      if (error) throw error;
+      return data as Project[];
+    },
+  });
 
-  const filteredProjects = activeCategory === "ALL"
-    ? projects
-    : projects.filter((project) => project.category === activeCategory);
+  const allTags = Array.from(
+    new Set(projects.flatMap((p) => (p.tags ?? []).map((t) => t.toUpperCase())))
+  );
+  const categories = ["ALL", ...allTags];
+
+  const filtered =
+    activeTag === "ALL"
+      ? projects
+      : projects.filter((p) => (p.tags ?? []).some((t) => t.toUpperCase() === activeTag));
 
   return (
     <div className="min-h-screen bg-background">
@@ -81,92 +51,102 @@ const Work = () => {
                 OUR WORK
               </h1>
               <p className="text-xl text-muted-foreground max-w-3xl">
-                A selection of websites, web apps and mobile apps we've shipped
-                with teams we care about.
+                A selection of projects shipped by Solis Institute.
               </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="pb-16">
-        <div className="container mx-auto px-6">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-wrap gap-8 justify-center md:justify-start">
-              {categories.map((category) => (
-                <button
-                  key={category}
-                  onClick={() => setActiveCategory(category)}
-                  className={`text-minimal transition-colors duration-300 relative group ${
-                    activeCategory === category
-                      ? "text-foreground"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {category}
-                  <span
-                    className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
-                      activeCategory === category
-                        ? "scale-x-100"
-                        : "scale-x-0 group-hover:scale-x-100"
+      {categories.length > 1 && (
+        <section className="pb-16">
+          <div className="container mx-auto px-6">
+            <div className="max-w-7xl mx-auto">
+              <div className="flex flex-wrap gap-8 justify-center md:justify-start">
+                {categories.map((category) => (
+                  <button
+                    key={category}
+                    onClick={() => setActiveTag(category)}
+                    className={`text-minimal transition-colors duration-300 relative group ${
+                      activeTag === category
+                        ? "text-foreground"
+                        : "text-muted-foreground hover:text-foreground"
                     }`}
-                  ></span>
-                </button>
-              ))}
+                  >
+                    {category}
+                    <span
+                      className={`absolute bottom-0 left-0 w-full h-px bg-foreground transition-transform duration-300 origin-left ${
+                        activeTag === category ? "scale-x-100" : "scale-x-0 group-hover:scale-x-100"
+                      }`}
+                    ></span>
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       <section className="pb-32">
         <div className="container mx-auto px-6">
           <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 lg:gap-20">
-              {filteredProjects.map((project, index) => (
-                <div key={index} className="group cursor-pointer">
-                  <div className="relative overflow-hidden mb-8">
-                    <img
-                      src={project.image}
-                      alt={project.title}
-                      className="w-full h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105"
-                    />
-                    <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-
-                    <div className="absolute top-6 left-6 bg-background/90 backdrop-blur-sm px-4 py-2">
-                      <span className="text-minimal text-foreground">
-                        {project.category}
-                      </span>
-                    </div>
-                  </div>
-
-                  <div className="space-y-6">
-                    <div>
-                      <h3 className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-muted-foreground transition-colors duration-500">
-                        {project.title}
-                      </h3>
-                      <p className="text-minimal text-muted-foreground">
-                        {project.client}
-                      </p>
-                    </div>
-
-                    <p className="text-muted-foreground leading-relaxed">
-                      {project.description}
-                    </p>
-
-                    <div className="flex gap-8 pt-4 border-t border-border">
-                      <div>
-                        <p className="text-minimal text-muted-foreground mb-1">STACK</p>
-                        <p className="text-foreground">{project.stack}</p>
+            {isLoading ? (
+              <p className="text-muted-foreground">Loading…</p>
+            ) : filtered.length === 0 ? (
+              <p className="text-muted-foreground">No projects yet.</p>
+            ) : (
+              <div className="grid md:grid-cols-2 gap-16 lg:gap-20">
+                {filtered.map((project) => {
+                  const Card = (
+                    <div className="group cursor-pointer">
+                      {project.image_url && (
+                        <div className="relative overflow-hidden mb-8">
+                          <img
+                            src={project.image_url}
+                            alt={project.title}
+                            className="w-full h-[60vh] object-cover transition-transform duration-700 group-hover:scale-105"
+                          />
+                          {project.tags?.[0] && (
+                            <div className="absolute top-6 left-6 bg-background/90 backdrop-blur-sm px-4 py-2">
+                              <span className="text-minimal text-foreground">{project.tags[0].toUpperCase()}</span>
+                            </div>
+                          )}
+                        </div>
+                      )}
+                      <div className="space-y-6">
+                        <div>
+                          <h3 className="text-2xl lg:text-3xl font-light text-architectural mb-2 group-hover:text-muted-foreground transition-colors duration-500">
+                            {project.title}
+                          </h3>
+                          {project.year && (
+                            <p className="text-minimal text-muted-foreground">{project.year}</p>
+                          )}
+                        </div>
+                        {project.description && (
+                          <p className="text-muted-foreground leading-relaxed">{project.description}</p>
+                        )}
+                        {project.tags && project.tags.length > 0 && (
+                          <div className="flex gap-3 flex-wrap pt-4 border-t border-border">
+                            {project.tags.map((t) => (
+                              <span key={t} className="text-minimal text-muted-foreground">
+                                {t}
+                              </span>
+                            ))}
+                          </div>
+                        )}
                       </div>
-                      <div>
-                        <p className="text-minimal text-muted-foreground mb-1">YEAR</p>
-                        <p className="text-foreground">{project.year}</p>
-                      </div>
                     </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+                  );
+                  return project.link ? (
+                    <a key={project.id} href={project.link} target="_blank" rel="noreferrer">
+                      {Card}
+                    </a>
+                  ) : (
+                    <div key={project.id}>{Card}</div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </section>
