@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { ThemeToggle } from "@/components/ThemeToggle";
 import solisLogo from "@/assets/solis-logo.jpg";
@@ -9,27 +10,27 @@ const Navigation = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-xl border-b border-border/60">
       <div className="container mx-auto px-8 py-4 flex items-center justify-between">
-        <a href="/" className="flex items-center gap-3 group">
+        <Link to="/" className="flex items-center gap-3 group">
           <img src={solisLogo} alt="Solis Institute" className="h-11 w-11 object-contain" />
           <span className="flex flex-col leading-none">
             <span className="font-display text-xl tracking-[0.2em] text-foreground">SOLIS</span>
             <span className="text-[9px] tracking-[0.18em] uppercase text-muted-foreground mt-1 hidden sm:inline">Institute of Technology &amp; Software</span>
           </span>
-        </a>
+        </Link>
         
         <div className="hidden md:flex items-center space-x-12">
-          <a href="/" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          <Link to="/" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             HOME
-          </a>
-          <a href="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          </Link>
+          <Link to="/work" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             WORK
-          </a>
-          <a href="/blog" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          </Link>
+          <Link to="/blog" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             BLOG
-          </a>
-          <a href="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+          </Link>
+          <Link to="/contact" className="text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
             CONTACT
-          </a>
+          </Link>
         </div>
 
         <div className="hidden md:flex items-center space-x-4">
@@ -50,18 +51,18 @@ const Navigation = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-background border-b border-border">
           <div className="container mx-auto px-6 py-6 space-y-4">
-            <a href="/" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            <Link to="/" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
               HOME
-            </a>
-            <a href="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </Link>
+            <Link to="/work" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
               WORK
-            </a>
-            <a href="/blog" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </Link>
+            <Link to="/blog" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
               BLOG
-            </a>
-            <a href="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300">
+            </Link>
+            <Link to="/contact" className="block text-minimal text-muted-foreground hover:text-foreground transition-colors duration-300" onClick={() => setIsMenuOpen(false)}>
               CONTACT
-            </a>
+            </Link>
             
             {/* Mobile Theme Toggle */}
             <div className="pt-4 border-t border-border">

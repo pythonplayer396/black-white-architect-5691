@@ -166,13 +166,13 @@ const Work = () => {
             <p className="text-xl text-muted-foreground mb-12">
               Tell us about your project — we'll come back within 24 hours.
             </p>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="inline-block text-minimal text-foreground hover:text-muted-foreground transition-colors duration-300 relative group"
             >
               START A PROJECT
               <span className="absolute bottom-0 left-0 w-full h-px bg-foreground group-hover:bg-muted-foreground transition-colors duration-300"></span>
-            </a>
+            </Link>
           </div>
         </div>
       </section>
